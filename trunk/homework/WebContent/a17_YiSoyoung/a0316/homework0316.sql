@@ -1,34 +1,37 @@
-/* 숙제1) 6개월의 인턴기간에는 급여의 70%만 지급하기로 했다. 단 사원의 인턴기간 만료 시점을 출력하고 6개월간의 급여의 총합을 계산하세요.
-      월급여 - SAL/13, 
-	 인턴기간 - 월급여의 70%,
-	 인턴기간월급여총액- 인턴기간 6개월간 급여 총액을 10단위 절삭해서 출력
-	 출력폼 : 사원번호     사원명    입사일     인턴기간만료시점    인턴기간월급여
+/* 숙제 : SAL를 기준으로 
+	1000미만 - 10% 보너스
+	1000~2000미만 - 20% 보너스
+	2000~3000미만 -30% 보너스
+	3000~4000미만 - 40% 보너스
+	4000~5000미만 - 50% 보너스
+	5000이상 - 60% 보너스를 지급하기로 했다. 사번, 이름, 연봉, 보너스(%), 보너스
 */
-SELECT EMPNO, ENAME, HIREDATE, ADD_MONTHS(HIREDATE, 6) "인터만료시점", TRUNC(SAL/13*0.7*6,-1) "인턴기간월급여" FROM EMP;
-
-/* 숙제2) 급여 계산.. 3단계 급여일을 나누어서 출력
-     1단계 당월20일, 2단계 당월 마지막날, 3단계 다음달 10일
-        사원 입사일 첫 월급1 첫월급2 첫월급3
-*/
-SELECT HIREDATE, ADD_MONTHS(LAST_DAY(HIREDATE),-1)+20 "첫월급1", 
-	LAST_DAY(HIREDATE) "첫월급2", 
-	LAST_DAY(HIREDATE)+10 "첫월급3"
-	FROM EMP;
---위의 경우 2월22일에 입사해도 2월20일에 첫월급을 받는 걸로 되어 있어 아래와 같이 바꾸었다. 
--- 아래의 경우 2월 21일에 입사한 사람은 다음달 20일인 3월20일에 월급을 받는다.
--- SELECT HIREDATE, ROUND(HIREDATE-5, 'MONTH') FROM EMP;이용
-SELECT HIREDATE, ADD_MONTHS(LAST_DAY(ROUND(HIREDATE-5, 'MONTH')),-1)+20 "첫월급1", 
-	LAST_DAY(ROUND(HIREDATE-5, 'MONTH')) "첫월급2", 
-	LAST_DAY(ROUND(HIREDATE-5, 'MONTH'))+10 "첫월급3"
+SELECT EMPNO, ENAME 이름, SAL 연봉, TRUNC(SAL/100,-1)+10 "보너스(%)", SAL*(TRUNC(SAL/100,-1)+10)*0.01 보너스
 	FROM EMP;
 
-/**
-	숙제3 : 근무개월수에 따른 차등 보너스 지급
-	가장 오래된 개월~가장 최근에 입사한 개월수
-	1/3 = 30%,  1/3=20%, 1/3 = 10% (연봉기준)
-	 사원, 입사일, 현재날짜(@@/@@/@@ AM @@시@@분@@초), 근무개월수,
-**/
-SELECT ENAME, HIREDATE, 
-	TO_CHAR(SYSDATE,'"현재날짜("YY"/"MM"/"DD AM" "HH"시"mm"분"ss"초)"') 입사일,
-	TRUNC(MONTHS_BETWEEN(SYSDATE, HIREDATE)) 근무개월수
+/* 숙제
+  사원을 부서기준으로 1팀과 2팀으로 나누어서 체육대회를 하기로 했다.
+  부서번호가 10,30 => 1팀
+  부서번호가 20 => 2팀
+  으로 나누고 부서번호, 사원번호, 이름, 팀명을 출력하시오.
+*/
+SELECT DEPTNO, EMPNO, ENAME, MOD(-DEPTNO/10,2)+2||'팀' FROM EMP;
+
+/* 확인 예제 : 아래의 형식의 데이터를 화면에 LIST
+		사번    이름   직책(이름의 문자열 수 만큼만 표시)
+*/
+SELECT EMPNO, ENAME, SUBSTR(JOB, 1, LENGTH(ENAME)) FROM EMP;
+
+/* 과제 ) 함수를 이용하여 다음 내용을 출력하세요.
+	@@@님  입사일  @@년@@월@@일이며, 현재 연봉은 @@만원 받고 있습니다.
+	column명 empinfo
+*/
+SELECT ENAME||'님 입사일 '|| SUBSTR(HIREDATE,1,2)||'년'||SUBSTR(HIREDATE,4,2)||'월'|| SUBSTR(HIREDATE,7,2)
+ 	||'일이며 현재 연봉은 '||SAL||'만원 받고 있습니다' empinfo
 	FROM EMP;
+
+-- 과제) SUBSTR을 활용하여 JOB이 MAN으로 끝나는 데이터를 출력
+SELECT * FROM EMP WHERE SUBSTR(JOB, -3, 3)='MAN';
+
+-- 숙제 : 입사일이 12월인 데이터를 이름과 입사일을 INSTR함수를 이용해서 출력하세요
+SELECT * FROM EMP WHERE INSTR(HIREDATE, '/12/',1,1)=3;
