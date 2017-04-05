@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>17.04.03</title>
+		<style type="text/css">
+		/*
+		*/
+		</style>
+		<script src="http://code.jquery.com/jquery-1.10.2.js">
+		</script>
+		<script type="text/javascript">
+		/*
+			가위 바위 보  게임 결과 처리.. 
+			과제)해당 팀에 대한 승패 
+			@@@ 팀 승
+			무승부
+		*/
+			var rspaper = ["rock","scissors","paper"];
+			var teamA = prompt("Team A Name : ", "Blue");
+			var teamB = prompt("Team A Name : ", "Red");
+			var teamA_res = parseInt(Math.random()*3);
+			var teamB_res = parseInt(Math.random()*3);
+			var fight_res = teamA_res - teamB_res;
+			var msg = "";
+			if(fight_res>0)
+			{
+				if(fight_res == 2) msg = teamA;
+				else msg = teamB;
+				msg += " is won!";
+			}
+			else if(fight_res<0)
+			{
+				if(fight_res == -2) msg = teamB;
+				else msg = teamA;
+				msg += " is won!";
+			}
+			else msg = "Draw";
+			alert(teamA+" : "+rspaper[teamA_res]);
+			alert(teamB+" : "+rspaper[teamB_res]);
+			alert(msg);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
