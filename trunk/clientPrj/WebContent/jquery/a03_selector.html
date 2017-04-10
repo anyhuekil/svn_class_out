@@ -24,7 +24,7 @@ function chgAttr(){
 	// $("요소[속성=속성값]").val("데이터 할당");
 	$("input[name='id01']").val("비가 올 듯 말듯!! 기분이 좋을 듯 말듯..");
 	// $("요소[속성!=속성값]") : 해당 객체가 아닌 것에 value값을 8888로 입력처리
-	$("input[type!='password']").val("8888");
+	$("input[type='password']").val("8888");
 
 }
 function filterFun(){
@@ -38,8 +38,8 @@ function filterFun(){
 	<input type="button" value="filterData!!" onclick="filterFun()"/><br>
 	남자<input type="radio" name="gender" value="gentlman"/>
 	여자<input type="radio" name="gender" value="lady" checked/><br>
-	<input type="text"  name="id01"/>
-	<input type="password"/>
+	id01<input type="text"  name="id01" value="id01"/>
+	password<input type="password"/>
 	<input type="text"  name="id02"/>
 	<input type="radio"/>
 	<input type="checkbox"/>
