@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+
+*/
+	td{width:33%;height:33%;text-align:center;}
+/**/
+</style>
+<script src="http://code.jquery.com/jquery-1.10.2.js">
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("td").first().css("background","yellow");
+	$("td").last().css("background","pink");
+	// eq(index)
+	setInterval(function(){
+		// 초기화..
+		$("td").html("");
+		var ranIdx=parseInt(Math.random()*9);
+		$("td").eq( ranIdx).html("두더지 출현");
+		// 이벤트...
+		// 클릭시, 점수 올라가게 처리..(숙제)
+		
+	}, 500); // 단계별로 게임 level upgrade
+
+});
+</script>
+</head>
+<body>
+<table align="center" width="300pt" height="300pt" border>
+	<tr><td></td><td></td><td></td></tr>
+	<tr><td></td><td></td><td></td></tr>
+	<tr><td></td><td></td><td></td></tr>
+</table>
+
+</body>
+</html>
