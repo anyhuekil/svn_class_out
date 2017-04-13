@@ -1,0 +1,18 @@
+package javaexp.a00_basic;
+
+import java.io.*;
+import java.net.*;
+
+public class A14_Net_Server {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+/* Server프로그램..demon
+ *    client가 접속하면 특정 문자 전달.
+ *    
+ * Client프로그램  
+ * 	  Server에 접속해서 데이터 전달 받음..
+ * */
+	}
+
+}
