@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="Text/css">
+	.after{background-color: yellow;}
+	.before{background-color: blue;}
+</style>
+<script src="http://code.jquery.com/jquery-1.10.2.js "></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	/*
+	1단계: 
+		초기: class가 적용되지 않음
+		onload 시: 아래와 같이 배경 색상 처리
+		클릭 시: 배경색상이 노랑으로 변경(remove, add class)
+	*/
+	$("td").each(function(item, index){
+		var rand=Math.random();		
+		console.log(rand);
+		if(rand>0.5)
+			$(this).addClass("after");
+		else
+		$(this).addClass("before");
+	
+	});
+	$("td").on("click",function(item,index){
+		$(this).removeClass("before");
+		$(this).addClass("after");
+	})
+	
+});
+</script>
+</head>
+<body>
+<table align="center" width="300" height="300">
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+
+</table>
+
+</body>
+</html>
