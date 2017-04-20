@@ -1,0 +1,46 @@
+/* ?™•?¸ ë°? ? •ë¦? 0411
+ 1. ë³??ˆ˜ ?´ë¦„ìœ¼ë¡? ?‚¬?š© ê°??Š¥ ê²ƒì„ ?„ ?ƒ?•˜?„¸?š”
+	?“modelName, class, 6hour, $value, _age, int
+	
+	?‹µ : $value, _age
+	
+ 2. ê¸°ë³¸ data type(primitive data)?„ 8ê°œë?? ? ?–´ë³´ì„¸?š”.
+ 
+ 	?‹µ: 
+ 	?…¼ë¦¬í˜• : boolean(1ë°”ì´?Š¸ - 8ë¹„íŠ¸)
+ 	? •?ˆ˜?˜• : byte(1ë°”ì´?Š¸ - 8ë¹„íŠ¸)
+ 			 short(2ë°”ì´?Š¸ - 16ë¹„íŠ¸)
+ 			 int(4ë°”ì´?Š¸ - 32ë¹„íŠ¸)
+ 			 long(8ë°”ì´?Š¸ - 64ë¹„íŠ¸)
+ 	?‹¤?ˆ˜?˜• : float(4ë°”ì´?Š¸ - 32ë¹„íŠ¸)
+ 		 	 double(8ë°”ì´?Š¸ - 32ë¹„íŠ¸)
+ 	ë¬¸ì?˜• : char(2ë°”ì´?Š¸ - 16ë¹„íŠ¸)	 	 
+ 	
+ 		
+	
+ 3. ?‹¤?Œ ì½”ë“œ?—?„œ ???…, ë³??ˆ˜?´ë¦?, ë¦¬í„°?Ÿ´?— ?•´?‹¹?•˜?Š” ê²ƒì„ ? ?–´ë³´ì„¸?š”.
+ 	int age;
+ 	age = 10;
+ 	double price = 3.14;
+	?“í??… : ( int ), ( double )
+	?“ë??ˆ˜?´ë¦? : ( age ), ( price )
+	?“ë¦¬?„°?Ÿ´ : ( 10 ), ( 3.14 )
+	
+ 4.??™ ???… ë³??™˜?— ???•œ ?‚´?š©?œ¼ë¡? ì»´íŒŒ?¼ ?—?Ÿ¬ê°? ë°œìƒ?•˜?Š” ê²ƒì??
+ 	byte byteValue= 10;							?‹µ : 3
+	char charValue=?˜A';
+	1) int intvalue=byteValue;
+	2) int intValue = charValue;
+	3) short shortValue= charValue;
+	4)double doubleValue = byteValue;
+*/
+package javahomework.a13_SeoJunghyo;
+
+public class a01_homework_0411 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

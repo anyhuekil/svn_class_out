@@ -1,0 +1,76 @@
+/* 숙제
+ 은행에 가서(2단계)
+ 1) Account (계좌계정)
+ 2) field명 계정명, 입금액, 출금액, 총잔액, 날짜, 내용
+ 3) 생성자1 계정명 입력
+ 4) 생성자2 계정명, 초기입금액
+ 5) save(입금액, 날짜)
+ 		- 계산처리
+ 		- return 입금된 금액
+ 6) withdarw(출금액, 날짜)
+ 7) print()
+ 		날짜 용돈 입금액 출금액 총잔액
+
+*/
+package javahomework.a14_SeoJunghyo;
+
+class Account{
+	String name;
+	int outMoney;
+	int saveMoney;
+	int nowMoney;
+	String date;
+	String text;
+	
+	Account(String name){
+		this.name=name;
+	}
+	Account(String name, int nowMoney){
+		this.name=name;
+		this.nowMoney=nowMoney;
+	}
+	int deposit(int saveMoney, String date){
+		this.saveMoney=saveMoney;
+		this.date=date;
+		outMoney=0;
+		nowMoney+=saveMoney;
+		return nowMoney;
+	}
+	int withdraw(int outMoney, String date){
+		this.outMoney=outMoney;
+		this.date=date;
+		saveMoney=0;
+		nowMoney-=outMoney;
+		return nowMoney;
+	}
+	void show(){
+		System.out.println("날짜: "+date+"\t입금액: "+saveMoney+"원\t출금액"+outMoney+"원 \t현재 잔고: "+nowMoney+"원");
+	}
+	
+}
+public class a02_homework_bank2_0419 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Account myAccount= new Account("호날두");
+		System.out.println(myAccount.name+"님의 현재 잔고: "+myAccount.nowMoney+"원");
+		myAccount.deposit(20000, "2017-04-20");
+		myAccount.show();
+		myAccount.withdraw(5000, "2017-04-21");
+		myAccount.show();
+		myAccount.deposit(10000,"2017-04-21");
+		myAccount.show();
+		myAccount.withdraw(15000, "2017-04-21");
+		myAccount.show();
+		Account myAccount2 = new Account("메시",17500);
+		System.out.println(myAccount2.name+"님의 현재 잔고: "+myAccount2.nowMoney+"원");
+		myAccount2.deposit(17500, "2017-04-21");
+		myAccount2.withdraw(5500, "2017-04-22");
+		myAccount2.show();
+		myAccount2.deposit(9000,"2017-04-23");
+		myAccount2.show();
+		myAccount2.withdraw(15000, "2017-04-24");
+		myAccount2.show();
+	}
+
+}
