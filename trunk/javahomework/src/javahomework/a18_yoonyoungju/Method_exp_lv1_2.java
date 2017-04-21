@@ -1,13 +1,13 @@
 package javahomework.a18_yoonyoungju;
 /*
-���뻾(1�떒?��)
-�� ?�꾩�?
-�궒 field : ?�꾩쥖紐�?, (?��?���?)
-�궒 �깮�꽦�옄(?�꾩쥖紐�? �엯�젰)
-�궒 input( �엯湲덉�? )
-�� @@@�떂 @@@�썝 �엯湲덊뻽�?���땲�떎.(�쁽�옍�븸@@)
-�궒 output( ?��?��?���븸)
-�� @@@�떂 @@@�썝 ?��?��?���뻽�뒿�땲�떎.(�쁽�옍�븸@@)
+은행
+ - 계좌
+	field: 계좌명, (총액)
+	생성자(계좌명 입력)
+	input( 입금액) 
+ @@@ 님 @@@ 원 입금했습니다 ( 현잔액 @@)
+	output(출금액)
+@@@ 님 @@@ 원 출금했습니다 ( 현잔액 @@)
 
 */
 class Bank{
@@ -19,37 +19,22 @@ class Bank{
 	Bank(String accountname){
 		this.accountname=accountname;
 	}
-	int money(String accountname, int inprice, int outprice){
-		this.accountname=accountname;
-		this.inprice=inprice;
-		this.outprice=outprice;
-		total=inprice+(-outprice);
-		return total;
+	int input(int inprice){
+		return this.inprice=inprice;
 	}
-	void input(){
-		System.out.print(accountname+"�떂"+ inprice+"�썝 �엯湲덊뻽�?���땲�떎.");
-		System.out.print("(�쁽�옍�븸"+total+")");
-		this.total = total;
-		
+	int output(int outprice){
+		return this.outprice=(-outprice);
 	}
-	void output(){
-		System.out.print(accountname+"�떂"+ outprice+"�썝 ?��?��?���뻽�뒿�땲�떎.");
-		System.out.print("(�쁽�옍�븸"+total+")");
-		this.total = total;
-	}
-	
 }
 public class Method_exp_lv1_2 {
-
 	public static void main(String[] args) {
 			// TODO Auto-generated method stub
-			Bank b = new Bank("�쑄�쁺二�");
-			b.money("�쑄�쁺二�", 12000, 0);
-			b.input();
-			b.money("�쑄�쁺二�", 0, 20000);
-			b.output();
+			Bank b = new Bank("윤영주");
+			int sum=b.input(12000);
+			System.out.println(b.accountname+"님"+b.inprice+"원 입금했습니다 ( 현잔액"+sum+")");
+			sum += b.output(5000);
+			System.out.println(b.accountname+"님"+b.outprice+"원 출금했습니다 ( 현잔액"+sum+")");
 	}
-
 }
 
 

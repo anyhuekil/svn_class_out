@@ -10,6 +10,10 @@ public class WoodCutter {
 	private String cacheClothe="뒷동산 바위밑";
 	void searchClothe(){
 		// 내부 필드이기에 접근이 가능함..
-		System.out.println(cacheClothe);
+		System.out.println("옷이 있는 곳은"+cacheClothe);
 	}
+//	접근 제어자 public으로 선언된 것은 패키지가 다르더라도
+//	모든 객체에서 접근 가능.
+	public String weddingAnnounce="노총각 드디어 장가 가다!!";
+	
 }

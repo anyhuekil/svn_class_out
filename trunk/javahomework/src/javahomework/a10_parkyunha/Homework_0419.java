@@ -12,16 +12,21 @@ public class Homework_0419 {
 		
 		
 		// HW02
-		Account myAccount = new Account("Park");
+		Account myAccount = new Account("Park", "Male", 0);
+		Account hisAccount = new Account("Torr", "Female", 0);
 		
 		System.out.println("Name\t\tSave\tWithdraw\tTotal\tDate\t\tContent");
-		myAccount.save(100, "savings", "2017-01-01");
-		myAccount.save(100, "savings", "2017-02-01");
-		myAccount.save(100, "savings", "2017-03-01");
+		myAccount.banking("saving", 100, "savings", "2017-01-01");
+		myAccount.banking("saving", 100, "savings", "2017-02-01");
+		hisAccount.banking("withdraw", 40, "buy hammer", "2017-02-07");
+		hisAccount.banking("withdraw", 40, "buy robe", "2017-02-15");
+		myAccount.banking("saving", 100, "savings", "2017-03-01");
 		
-		myAccount.withdraw(50, "pay bill", "2017-03-10");
-		myAccount.withdraw(50, "pay bill", "2017-04-10");
-		myAccount.withdraw(50, "pay bill", "2017-05-10");
+		myAccount.banking("withdraw", 50, "pay bill", "2017-03-10");
+		myAccount.banking("withdraw", 50, "pay bill", "2017-04-10");
+		hisAccount.banking("saving", 80, "win lottaty", "2017-04-12");
+		myAccount.banking("withdraw", 50, "pay bill", "2017-05-10");
+		hisAccount.banking("withdraw", 40, "Performance fee", "2017-05-17");
 		
 	}
 
@@ -40,38 +45,27 @@ public class Homework_0419 {
  * */
 class Account {
 	private String name;
-	private int currentMoney;
+	private String gender;
+	static private int currentMoney;
 	
 	Account(String name) {
 		this.name = name;
 	}
 	
-	Account(String name, int initCapital) {
+	Account(String name, String gender, int initCapital) {
 		this.name = name;
-		this.currentMoney = initCapital;
+		this.gender = gender;
+		Account.currentMoney += initCapital;
 	}
 	
-	int save(int saveMoney, String content, String date) {
-		this.currentMoney += saveMoney;
-		printLog("save", saveMoney, this.currentMoney, date, content);
+	void banking(String type, int money, String content, String date) {
+		String title = this.gender.equals("Male") ? "Mr." : "Ms.";
+		Account.currentMoney += type.equals("saving") ? money : (-1)*money;
 		
-		return saveMoney;
-	}
-	
-	int withdraw(int withdrawMoney, String content, String date) {
-		this.currentMoney -= withdrawMoney;
-		printLog("withdraw", withdrawMoney, this.currentMoney, date, content);
-		
-		return withdrawMoney;
-	}
-	
-	void printLog(String type, int money, int totalMoney, String date, String content) {
-		// date	content input output total
-		
-		if(type == "save") {
-			System.out.println("Mr."+this.name+"\t\t$"+money+"\t\t\t$"+totalMoney+"\t"+date+"\t"+content);
+		if(type == "saving") {
+			System.out.println(title+this.name+"\t\t$"+money+"\t\t\t$"+Account.currentMoney+"\t"+date+"\t"+content);
 		} else if(type == "withdraw") {
-			System.out.println("Mr."+this.name+"\t\t\t$"+money+"\t\t$"+totalMoney+"\t"+date+"\t"+content);
+			System.out.println(title+this.name+"\t\t\t$"+money+"\t\t$"+Account.currentMoney+"\t"+date+"\t"+content);
 		}
 	}
 }

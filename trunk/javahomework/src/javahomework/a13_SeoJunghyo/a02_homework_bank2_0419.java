@@ -31,29 +31,29 @@ class Account{
 	}
 	int deposit(int depositMoney, String date, String who){
 		this.nowMoney+=depositMoney;
-		print(date, "입금", depositMoney, withdrawMoney, nowMoney, who);
-		return depositMoney;
+		print(date, "DEPOSIT", depositMoney, withdrawMoney, nowMoney, who);
+		return nowMoney;
 	}
 	int deposit(int depositMoney, String date){
 		this.nowMoney+=depositMoney;
-		print(date, "입금", depositMoney, withdrawMoney, nowMoney, name);
-		return depositMoney;
+		print(date, "DEPOSIT", depositMoney, withdrawMoney, nowMoney, name);
+		return nowMoney;
 	}
 	int withdraw(int withdrawMoney, String date, String who){
 		this.nowMoney-=withdrawMoney;
-		print(date, "출금", depositMoney, withdrawMoney, nowMoney, who);
-		return withdrawMoney;
+		print(date, "WITHDROW", depositMoney, withdrawMoney, nowMoney, who);
+		return nowMoney;
 	}
 	int withdraw(int withdrawMoney, String date){
 		this.nowMoney-=withdrawMoney;
-		print(date, "출금", depositMoney, withdrawMoney, nowMoney, name);
-		return withdrawMoney;
+		print(date, "WITHDROW", depositMoney, withdrawMoney, nowMoney, name);
+		return nowMoney;
 	}
 	void print(String date, String staus, int depositMoney, int withdrawMoney, int nowMoney, String name){
-		if(nowMoney<withdrawMoney){
+		if(nowMoney<0){
 			System.out.println(name+"님. 잔고가 "+withdrawMoney+"원 부족하여 출금을 할수가 없습니다.");
 		}else{
-			System.out.println(date+"\t\t"+staus+"\t\t"+depositMoney+"원\t\t"+withdrawMoney+"원\t\t"+nowMoney+"원"+"\t\t"+name);
+			System.out.println(date+"\t\t"+staus+" \t"+depositMoney+"$\t\t"+withdrawMoney+"$\t\t"+nowMoney+"$"+"\t\t"+name);
 		}
 	}
 }	
@@ -62,21 +62,23 @@ public class a02_homework_bank2_0419 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Account myAccount = new Account("Ronaldo");
-		System.out.println("\n"+myAccount.name+"님의 통장");
-		System.out.println("날짜\t\t\t입출금\t\t 입금액\t\t출금액\t\t현재잔고\t\t입출금자");
+		System.out.println("\n"+myAccount.name+"'s Account. BALANCE : "+myAccount.nowMoney+"$");
+		System.out.println("DATE\t\t\tSTATUS\t\tDEPOSIT\t\tWITHDRAW\tBALANCE\t\tCUSTOMER");
 		myAccount.deposit(20000, "2017-12-17");
 		myAccount.deposit(30000, "2017-12-18");
+		myAccount.withdraw(10000, "2017-12-18");
 		myAccount.withdraw(30000, "2017-12-18");
 		myAccount.deposit(30000, "2017-12-18", "Messi");
 		myAccount.deposit(30000, "2017-12-18", "Rooney");
 		myAccount.deposit(300000, "2017-12-18", "Real Madrid");
 		
-		Account trashAccount = new Account("Messi",200);
-		System.out.println("\n"+trashAccount.name+"님의 통장");
-		System.out.println("날짜\t\t\t입출금\t\t 입금액\t\t출금액\t\t현재잔고\t\t입출금자");
-		trashAccount.deposit(200,"2017-04-12");
-		trashAccount.deposit(200,"2017-04-12");
-		trashAccount.deposit(20000,"2017-04-12","Neymar");
+		Account rivalAccount = new Account("Messi",200);
+		System.out.println("\n"+rivalAccount.name+"'s Account. BALANCE : "+rivalAccount.nowMoney+"$");
+		System.out.println("DATE\t\t\tSTATUS\t\tDEPOSIT\t\tWITHDRAW\tBALANCE\t\tCUSTOMER");
+		rivalAccount.deposit(200,"2017-04-12");
+		rivalAccount.deposit(200,"2017-04-12");
+		rivalAccount.deposit(20000,"2017-04-12","Neymar");
+		rivalAccount.withdraw(20000,"2017-04-12","Neymar");
 			
 		}
 
